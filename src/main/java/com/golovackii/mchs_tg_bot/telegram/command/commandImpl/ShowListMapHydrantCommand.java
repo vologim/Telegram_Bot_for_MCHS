@@ -14,6 +14,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class ShowListMapHydrantCommand implements Command {
@@ -27,8 +28,8 @@ public class ShowListMapHydrantCommand implements Command {
     }
 
     @Override
-    public void doAction(Bot bot, String[] data) {
-        String chatId = data[0];
+    public void doAction(Bot bot, Map<String, String> data) {
+        String chatId = data.get("chatId");
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
         sendMessage.setText(MESSAGE);

@@ -13,6 +13,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 
 @Component
 public class GetRDByIdCommand implements Command {
@@ -25,10 +26,10 @@ public class GetRDByIdCommand implements Command {
     }
 
     @Override
-    public void doAction(Bot bot, String[] data) {
+    public void doAction(Bot bot, Map<String, String> data) {
 
-        String chatId = data[0];
-        int elementId = Integer.parseInt(data[1]);
+        String chatId = data.get("chatId");
+        int elementId = Integer.parseInt(data.get("elementId"));
 
         RD rd = rdService.getById(elementId);
 

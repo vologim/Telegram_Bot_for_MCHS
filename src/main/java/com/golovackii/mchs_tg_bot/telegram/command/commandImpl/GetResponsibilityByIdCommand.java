@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -33,10 +34,10 @@ public class GetResponsibilityByIdCommand implements Command {
     }
 
     @Override
-    public void doAction(Bot bot, String[] data) {
+    public void doAction(Bot bot, Map<String, String> data) {
 
-        String chatId = data[0];
-        int elementId = Integer.parseInt(data[1]);
+        String chatId = data.get("chatId");
+        int elementId = Integer.parseInt(data.get("elementId"));
 
         Responsibility responsibility = responsibilityService.getById(elementId);
 

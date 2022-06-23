@@ -11,6 +11,7 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.File;
+import java.util.Map;
 
 @Component
 public class GetScheduleByIdCommand implements Command {
@@ -23,10 +24,10 @@ public class GetScheduleByIdCommand implements Command {
     }
 
     @Override
-    public void doAction(Bot bot, String[] data) {
+    public void doAction(Bot bot, Map<String, String> data) {
 
-        String chatId = data[0];
-        int elementId = Integer.parseInt(data[1]);
+        String chatId = data.get("chatId");
+        int elementId = Integer.parseInt(data.get("elementId"));
 
         Schedule schedule = scheduleService.getById(elementId);
         String filePath = schedule.getDocument().getFilePath();
