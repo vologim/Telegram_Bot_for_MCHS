@@ -30,3 +30,15 @@ position varchar(50) not null,
 file_id bigint not null,
 foreign key (file_id) references file(id)
 );
+
+create table statistics (
+id bigint primary key auto_increment,
+user_name varchar(100) not null,
+first_name varchar(100),
+last_name varchar(100),
+click_count_RD bigint default 0,
+click_count_schedule bigint default 0,
+click_count_map_hydrant bigint default 0,
+click_count_knowledge_base bigint default 0,
+click_count_developer bigint default 0
+);
