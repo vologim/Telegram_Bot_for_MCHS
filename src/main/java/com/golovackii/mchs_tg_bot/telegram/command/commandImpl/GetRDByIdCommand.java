@@ -2,6 +2,7 @@ package com.golovackii.mchs_tg_bot.telegram.command.commandImpl;
 
 import com.golovackii.mchs_tg_bot.model.RD;
 import com.golovackii.mchs_tg_bot.service.RDService;
+import com.golovackii.mchs_tg_bot.service.StatisticsService;
 import com.golovackii.mchs_tg_bot.telegram.Bot;
 import com.golovackii.mchs_tg_bot.telegram.command.Command;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,12 @@ import java.util.Map;
 public class GetRDByIdCommand implements Command {
 
     private final RDService rdService;
+    private final StatisticsService statisticsService;
 
     @Autowired
-    public GetRDByIdCommand(RDService rdService) {
+    public GetRDByIdCommand(RDService rdService, StatisticsService statisticsService) {
         this.rdService = rdService;
+        this.statisticsService = statisticsService;
     }
 
     @Override
@@ -42,6 +45,9 @@ public class GetRDByIdCommand implements Command {
             sendDocument.setDocument(new InputFile(fileInputStream, fileName));
 
             bot.execute(sendDocument);
+
+            String userName = data.get("userName");
+            statisticsService.incrementCountByUserName(userName, GetRDByIdCommand.class.getSimpleName());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

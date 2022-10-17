@@ -1,7 +1,9 @@
 package com.golovackii.mchs_tg_bot.telegram.command.commandImpl;
 
+import com.golovackii.mchs_tg_bot.service.StatisticsService;
 import com.golovackii.mchs_tg_bot.telegram.Bot;
 import com.golovackii.mchs_tg_bot.telegram.command.Command;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -15,6 +17,13 @@ public class ShowDeveloper implements Command {
     @Value("${developer.information}")
     private String developer;
 
+    private final StatisticsService statisticsService;
+
+    @Autowired
+    public ShowDeveloper(StatisticsService statisticsService) {
+        this.statisticsService = statisticsService;
+    }
+
     @Override
     public void doAction(Bot bot, Map<String, String> data) {
         String chatId = data.get("chatId");
@@ -24,6 +33,9 @@ public class ShowDeveloper implements Command {
 
         try {
             bot.execute(sendMessage);
+
+            String userName = data.get("userName");
+            statisticsService.incrementCountByUserName(userName, ShowDeveloper.class.getSimpleName());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }

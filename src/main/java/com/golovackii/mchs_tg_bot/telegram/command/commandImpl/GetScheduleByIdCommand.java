@@ -2,6 +2,7 @@ package com.golovackii.mchs_tg_bot.telegram.command.commandImpl;
 
 import com.golovackii.mchs_tg_bot.model.Schedule;
 import com.golovackii.mchs_tg_bot.service.ScheduleService;
+import com.golovackii.mchs_tg_bot.service.StatisticsService;
 import com.golovackii.mchs_tg_bot.telegram.Bot;
 import com.golovackii.mchs_tg_bot.telegram.command.Command;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,12 @@ import java.util.Map;
 public class GetScheduleByIdCommand implements Command {
 
     private final ScheduleService scheduleService;
+    private final StatisticsService statisticsService;
 
     @Autowired
-    public GetScheduleByIdCommand(ScheduleService scheduleService) {
+    public GetScheduleByIdCommand(ScheduleService scheduleService, StatisticsService statisticsService) {
         this.scheduleService = scheduleService;
+        this.statisticsService = statisticsService;
     }
 
     @Override
@@ -38,6 +41,9 @@ public class GetScheduleByIdCommand implements Command {
             sendPhoto.setPhoto(new InputFile().setMedia(new File(filePath)));
 
             bot.execute(sendPhoto);
+
+            String userName = data.get("userName");
+            statisticsService.incrementCountByUserName(userName, GetScheduleByIdCommand.class.getSimpleName());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }

@@ -17,7 +17,8 @@ import java.util.Map;
 @Component
 public class StartCommand implements Command {
 
-    private final String MESSAGE = "сообщение";
+    private final String MESSAGE = "Информационный справочник для работников МЧС РБ\n" +
+            "По всем вопросам и предложениям обращаться: https://t.me/vologim";
 
     @Override
     public void doAction(Bot bot, Map<String, String> data) {
