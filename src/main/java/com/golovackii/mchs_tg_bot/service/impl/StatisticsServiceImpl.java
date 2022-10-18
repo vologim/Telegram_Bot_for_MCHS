@@ -48,6 +48,9 @@ public class StatisticsServiceImpl implements StatisticsService {
             case ("ShowDeveloper"):
                 statistics.clickDeveloper();
                 break;
+            case ("GetCharacteristicsDocument"):
+                statistics.clickCharacteristicsDocument();
+                break;
             default:
                 break;
         }

@@ -48,7 +48,7 @@ public class ShowListRDCommand implements Command {
 
         for (RD element : rdService.getList()) {
             InlineKeyboardButton inlineKeyboardButton = new InlineKeyboardButton();
-            inlineKeyboardButton.setText(element.getNameDocument() + " от " + element.getDocumentDate());
+            inlineKeyboardButton.setText(element.getNameDocument());
             inlineKeyboardButton.setCallbackData(CommandName.GET_RD_BY_ID_COMMAND.getCommandName() + " " + element.getId());
 
             List<InlineKeyboardButton> row = new ArrayList<>();

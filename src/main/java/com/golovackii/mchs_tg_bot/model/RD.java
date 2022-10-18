@@ -26,7 +26,7 @@ public class RD {
     private String nameDocument;
 
     @Column(name = "doc_date")
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "dd.MM.yyyy")
     @JsonSerialize(using = LocalDateSerializer.class)
     @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate documentDate;

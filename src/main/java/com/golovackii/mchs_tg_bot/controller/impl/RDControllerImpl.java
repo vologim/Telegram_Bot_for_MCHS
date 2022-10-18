@@ -43,6 +43,7 @@ public class RDControllerImpl implements RDController {
         RD newRD = null;
         try {
             newRD = objectMapper.readValue(rd, RD.class);
+            newRD.setNameDocument(file.getOriginalFilename());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -58,6 +59,7 @@ public class RDControllerImpl implements RDController {
         RD newRD = null;
         try {
             newRD = objectMapper.readValue(rd, RD.class);
+            newRD.setNameDocument(file.getOriginalFilename());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

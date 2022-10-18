@@ -51,7 +51,7 @@ public class ResponsibilityControllerImpl implements ResponsibilityController {
 
     @Override
     @PutMapping
-    public void updateResponsibility(String responsibility, MultipartFile multipartFile) {
+    public void updateResponsibility(@RequestParam(name = "responsibility") String responsibility, @RequestParam(name = "file") MultipartFile multipartFile) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Responsibility newResponsibility = null;
@@ -61,9 +61,6 @@ public class ResponsibilityControllerImpl implements ResponsibilityController {
             e.printStackTrace();
         }
 
-        if (newResponsibility.getId() == null) {
-            responsibilityService.saveWithFile(newResponsibility, multipartFile);
-        }
         responsibilityService.updateWithFile(newResponsibility, multipartFile);
     }
 

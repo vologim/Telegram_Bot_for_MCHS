@@ -43,14 +43,27 @@ public class ShowKnowledgeBaseCommand implements Command {
 
         InlineKeyboardButton button2 = new InlineKeyboardButton();
         button2.setText(ButtonName.CHARACTERISTIC_FIRE_HOSE.getButtonName());
-        button2.setCallbackData(CommandName.SHOW_CHARACTERISTIC_FIRE_HOSE_COMMAND.getCommandName() + DECEPTION_ID);
+        button2.setCallbackData(CommandName.GET_CHARACTERISTIC_FIRE_HOSE_COMMAND.getCommandName() + DECEPTION_ID);
 
         List<InlineKeyboardButton> row1 = new ArrayList<>();
         row1.add(button1);
         row1.add(button2);
 
+        InlineKeyboardButton button3 = new InlineKeyboardButton();
+        button3.setText(ButtonName.CHARACTERISTIC_FIRE_PUMP.getButtonName());
+        button3.setCallbackData(CommandName.GET_CHARACTERISTIC_FIRE_PUMP_COMMAND.getCommandName() + DECEPTION_ID);
+
+        InlineKeyboardButton button4 = new InlineKeyboardButton();
+        button4.setText(ButtonName.CHARACTERISTIC_FIRE_STAIRS.getButtonName());
+        button4.setCallbackData(CommandName.GET_CHARACTERISTIC_FIRE_STAIRS_COMMAND.getCommandName() + DECEPTION_ID);
+
+        List<InlineKeyboardButton> row2 = new ArrayList<>();
+        row2.add(button3);
+        row2.add(button4);
+
         List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
         rowList.add(row1);
+        rowList.add(row2);
 
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         inlineKeyboardMarkup.setKeyboard(rowList);

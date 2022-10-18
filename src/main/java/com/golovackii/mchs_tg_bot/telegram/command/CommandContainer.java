@@ -25,6 +25,7 @@ public class CommandContainer {
                             GetResponsibilityByIdCommand getResponsibilityByIdCommand,
                             ShowKnowledgeBaseCommand showKnowledgeBaseCommand,
                             ShowDeveloper showDeveloper,
+                            GetCharacteristicsDocument getCharacteristicsDocument,
 
                             NoCommand noCommand) {
         this.commandMap = new HashMap<>();
@@ -40,6 +41,9 @@ public class CommandContainer {
         commandMap.put(GET_RESPONSIBILITIES_BY_ID_COMMAND.getCommandName(), getResponsibilityByIdCommand);
         commandMap.put(SHOW_KNOWLEDGE_BASE_COMMAND.getCommandName(), showKnowledgeBaseCommand);
         commandMap.put(SHOW_DEVELOPER.getCommandName(), showDeveloper);
+        commandMap.put(GET_CHARACTERISTIC_FIRE_HOSE_COMMAND.getCommandName(), getCharacteristicsDocument);
+        commandMap.put(GET_CHARACTERISTIC_FIRE_PUMP_COMMAND.getCommandName(), getCharacteristicsDocument);
+        commandMap.put(GET_CHARACTERISTIC_FIRE_STAIRS_COMMAND.getCommandName(), getCharacteristicsDocument);
 
         this.noCommand = noCommand;
     }

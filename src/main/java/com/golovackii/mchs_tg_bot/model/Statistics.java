@@ -35,15 +35,19 @@ public class Statistics {
     @Column(name = "click_count_developer")
     private Long clickCountDeveloper;
 
+    @Column(name = "click_characteristics_document")
+    private Long clickCharacteristicsDocument;
+
     @Column(name = "recent_activities")
     private LocalDateTime recentActivities;
 
     public Statistics() {
         this.clickCountRD = 0L;
-        this.clickCountSchedule =  0L;
-        this.clickCountMapHydrant =  0L;
-        this.clickCountKnowledgeBase =  0L;
-        this.clickCountDeveloper =  0L;
+        this.clickCountSchedule = 0L;
+        this.clickCountMapHydrant = 0L;
+        this.clickCountKnowledgeBase = 0L;
+        this.clickCountDeveloper = 0L;
+        this.clickCharacteristicsDocument = 0L;
         this.recentActivities = LocalDateTime.of(1993, 11, 9, 17, 35);
     }
 
@@ -65,5 +69,9 @@ public class Statistics {
 
     public void clickDeveloper() {
         clickCountDeveloper++;
+    }
+
+    public void clickCharacteristicsDocument() {
+        clickCharacteristicsDocument++;
     }
 }

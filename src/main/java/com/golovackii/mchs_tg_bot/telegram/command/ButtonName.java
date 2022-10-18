@@ -8,6 +8,7 @@ public enum ButtonName {
     KNOWLEDGE_BASE("База знаний"),
     RESPONSIBILITIES("Обязанности"),
     CHARACTERISTIC_FIRE_PUMP("ТТХ стволов"),
+    CHARACTERISTIC_FIRE_STAIRS("ТТХ лестниц"),
     CHARACTERISTIC_FIRE_HOSE("ТТХ рукавов"),
     DEVELOPER_BUTTON("Разработчики");
 
