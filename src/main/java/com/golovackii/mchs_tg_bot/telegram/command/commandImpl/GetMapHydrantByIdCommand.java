@@ -40,7 +40,7 @@ public class GetMapHydrantByIdCommand implements Command {
             bot.execute(sendMessage);
 
             String userName = data.get("userName");
-            statisticsService.incrementCountByUserName(userName, GetMapHydrantByIdCommand.class.getSimpleName());
+            statisticsService.incrementCountByUserName(userName, this.getClass().getSimpleName());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }

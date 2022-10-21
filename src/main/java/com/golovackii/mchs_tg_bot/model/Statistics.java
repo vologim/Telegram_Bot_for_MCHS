@@ -29,14 +29,14 @@ public class Statistics {
     @Column(name = "click_count_map_hydrant")
     private Long clickCountMapHydrant;
 
-    @Column(name = "click_count_knowledge_base")
-    private Long clickCountKnowledgeBase;
+    @Column(name = "click_count_responsibility")
+    private Long clickResponsibility;
 
     @Column(name = "click_count_developer")
     private Long clickCountDeveloper;
 
-    @Column(name = "click_characteristics_document")
-    private Long clickCharacteristicsDocument;
+    @Column(name = "click_characteristics")
+    private Long clickCharacteristics;
 
     @Column(name = "recent_activities")
     private LocalDateTime recentActivities;
@@ -45,9 +45,9 @@ public class Statistics {
         this.clickCountRD = 0L;
         this.clickCountSchedule = 0L;
         this.clickCountMapHydrant = 0L;
-        this.clickCountKnowledgeBase = 0L;
+        this.clickResponsibility = 0L;
         this.clickCountDeveloper = 0L;
-        this.clickCharacteristicsDocument = 0L;
+        this.clickCharacteristics = 0L;
         this.recentActivities = LocalDateTime.of(1993, 11, 9, 17, 35);
     }
 
@@ -63,15 +63,15 @@ public class Statistics {
         clickCountMapHydrant++;
     }
 
-    public void clickKnowledgeBase() {
-        clickCountKnowledgeBase++;
+    public void clickResponsibility() {
+        clickResponsibility++;
     }
 
     public void clickDeveloper() {
         clickCountDeveloper++;
     }
 
-    public void clickCharacteristicsDocument() {
-        clickCharacteristicsDocument++;
+    public void clickCharacteristics() {
+        clickCharacteristics++;
     }
 }

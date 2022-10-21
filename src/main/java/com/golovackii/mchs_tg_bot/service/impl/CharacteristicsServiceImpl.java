@@ -28,6 +28,7 @@ public class CharacteristicsServiceImpl implements CharacteristicsService {
     public void saveWithFile(Characteristics characteristics, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(CHARACTERISTICS_PATH + characteristics.getFileName(), multipartFile);
         characteristics.setDocument(new Document(path));
+        characteristics.setFileName(multipartFile.getOriginalFilename());
         characteristicsRepository.save(characteristics);
     }
 
@@ -35,6 +36,7 @@ public class CharacteristicsServiceImpl implements CharacteristicsService {
     public void updateWithFile(Characteristics characteristics, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(CHARACTERISTICS_PATH + characteristics.getFileName(), multipartFile);
         characteristics.setDocument(new Document(path));
+        characteristics.setFileName(multipartFile.getOriginalFilename());
         characteristicsRepository.save(characteristics);
     }
 

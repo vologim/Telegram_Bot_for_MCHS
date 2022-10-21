@@ -1,7 +1,6 @@
 package com.golovackii.mchs_tg_bot.telegram.command.commandImpl;
 
 import com.golovackii.mchs_tg_bot.model.Characteristics;
-import com.golovackii.mchs_tg_bot.model.Statistics;
 import com.golovackii.mchs_tg_bot.service.CharacteristicsService;
 import com.golovackii.mchs_tg_bot.service.StatisticsService;
 import com.golovackii.mchs_tg_bot.telegram.Bot;
@@ -18,13 +17,13 @@ import java.io.IOException;
 import java.util.Map;
 
 @Component
-public class GetCharacteristicsDocument implements Command {
+public class GetCharacteristicsByIdCommand implements Command {
 
     private final CharacteristicsService characteristicsService;
     private final StatisticsService statisticsService;
 
     @Autowired
-    public GetCharacteristicsDocument(CharacteristicsService characteristicsService, StatisticsService statisticsService) {
+    public GetCharacteristicsByIdCommand(CharacteristicsService characteristicsService, StatisticsService statisticsService) {
         this.characteristicsService = characteristicsService;
         this.statisticsService = statisticsService;
     }
@@ -48,7 +47,7 @@ public class GetCharacteristicsDocument implements Command {
             bot.execute(sendDocument);
 
             String userName = data.get("userName");
-            statisticsService.incrementCountByUserName(userName, GetCharacteristicsDocument.class.getSimpleName());
+            statisticsService.incrementCountByUserName(userName, this.getClass().getSimpleName());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

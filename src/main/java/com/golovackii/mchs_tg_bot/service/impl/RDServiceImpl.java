@@ -27,6 +27,7 @@ public class RDServiceImpl implements RDService {
     public void saveWithFile(RD rd, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(rd.getNameDocument() + rd.getDocumentDate(), multipartFile);
         rd.setDocument(new Document(path));
+        rd.setNameDocument(multipartFile.getOriginalFilename());
         rdRepository.save(rd);
     }
 
@@ -34,6 +35,7 @@ public class RDServiceImpl implements RDService {
     public void updateWithFile(RD rd, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(rd.getNameDocument() + rd.getDocumentDate(), multipartFile);
         rd.setDocument(new Document(path));
+        rd.setNameDocument(multipartFile.getOriginalFilename());
         rdRepository.save(rd);
     }
 

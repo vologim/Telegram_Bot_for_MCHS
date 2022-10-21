@@ -5,7 +5,6 @@ import com.golovackii.mchs_tg_bot.service.ResponsibilityService;
 import com.golovackii.mchs_tg_bot.service.StatisticsService;
 import com.golovackii.mchs_tg_bot.telegram.Bot;
 import com.golovackii.mchs_tg_bot.telegram.command.Command;
-import com.golovackii.mchs_tg_bot.util.FileLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
@@ -22,13 +21,11 @@ public class GetResponsibilityByIdCommand implements Command {
 
     private final ResponsibilityService responsibilityService;
     private final StatisticsService statisticsService;
-    private final FileLoader fileLoader;
 
     @Autowired
-    public GetResponsibilityByIdCommand(ResponsibilityService responsibilityService, StatisticsService statisticsService, FileLoader fileLoader) {
+    public GetResponsibilityByIdCommand(ResponsibilityService responsibilityService, StatisticsService statisticsService) {
         this.responsibilityService = responsibilityService;
         this.statisticsService = statisticsService;
-        this.fileLoader = fileLoader;
     }
 
     @Override
@@ -50,7 +47,7 @@ public class GetResponsibilityByIdCommand implements Command {
             bot.execute(sendDocument);
 
             String userName = data.get("userName");
-            statisticsService.incrementCountByUserName(userName, GetResponsibilityByIdCommand.class.getSimpleName());
+            statisticsService.incrementCountByUserName(userName, this.getClass().getSimpleName());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

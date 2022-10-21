@@ -42,7 +42,6 @@ public class CharacteristicsControllerImpl implements CharacteristicsController 
         Characteristics newCharacteristics = null;
         try {
             newCharacteristics = objectMapper.readValue(characteristics, Characteristics.class);
-            newCharacteristics.setFileName(multipartFile.getOriginalFilename());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -58,7 +57,6 @@ public class CharacteristicsControllerImpl implements CharacteristicsController 
         Characteristics newCharacteristics = null;
         try {
             newCharacteristics = objectMapper.readValue(characteristics, Characteristics.class);
-            newCharacteristics.setFileName(multipartFile.getOriginalFilename());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

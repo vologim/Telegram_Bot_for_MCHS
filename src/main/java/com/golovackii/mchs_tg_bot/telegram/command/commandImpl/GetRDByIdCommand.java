@@ -47,7 +47,7 @@ public class GetRDByIdCommand implements Command {
             bot.execute(sendDocument);
 
             String userName = data.get("userName");
-            statisticsService.incrementCountByUserName(userName, GetRDByIdCommand.class.getSimpleName());
+            statisticsService.incrementCountByUserName(userName, this.getClass().getSimpleName());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

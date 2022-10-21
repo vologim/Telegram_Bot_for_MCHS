@@ -1,9 +1,11 @@
 package com.golovackii.mchs_tg_bot.telegram.command.commandImpl;
 
+import com.golovackii.mchs_tg_bot.model.Characteristics;
+import com.golovackii.mchs_tg_bot.service.CharacteristicsService;
 import com.golovackii.mchs_tg_bot.telegram.Bot;
-import com.golovackii.mchs_tg_bot.telegram.command.ButtonName;
 import com.golovackii.mchs_tg_bot.telegram.command.Command;
 import com.golovackii.mchs_tg_bot.telegram.command.CommandName;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -15,10 +17,15 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class ShowKnowledgeBaseCommand implements Command {
+public class ShowListCharacteristics implements Command {
 
-    private final String DECEPTION_ID = " " + 0;
-    private final String MESSAGE = "Выберите пункт:";
+    private final CharacteristicsService characteristicsService;
+    private final String MESSAGE = "Выберите документ:";
+
+    @Autowired
+    public ShowListCharacteristics(CharacteristicsService characteristicsService) {
+        this.characteristicsService = characteristicsService;
+    }
 
     @Override
     public void doAction(Bot bot, Map<String, String> data) {
@@ -37,20 +44,18 @@ public class ShowKnowledgeBaseCommand implements Command {
 
     private InlineKeyboardMarkup getKeyboard() {
 
-        InlineKeyboardButton button1 = new InlineKeyboardButton();
-        button1.setText(ButtonName.RESPONSIBILITIES.getButtonName());
-        button1.setCallbackData(CommandName.SHOW_RESPONSIBILITIES_COMMAND.getCommandName() + DECEPTION_ID);
-
-        InlineKeyboardButton button2 = new InlineKeyboardButton();
-        button2.setText(ButtonName.CHARACTERISTICS.getButtonName());
-        button2.setCallbackData(CommandName.SHOW_CHARACTERISTICS_COMMAND.getCommandName() + DECEPTION_ID);
-
-        List<InlineKeyboardButton> row1 = new ArrayList<>();
-        row1.add(button1);
-        row1.add(button2);
-
         List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
-        rowList.add(row1);
+
+        for (Characteristics characteristics : characteristicsService.getList()) {
+            InlineKeyboardButton inlineKeyboardButton = new InlineKeyboardButton();
+            inlineKeyboardButton.setText(characteristics.getFileName());
+            inlineKeyboardButton.setCallbackData(CommandName.GET_CHARACTERISTICS_COMMAND.getCommandName() + " " + characteristics.getId());
+
+            List<InlineKeyboardButton> row = new ArrayList<>();
+            row.add(inlineKeyboardButton);
+
+            rowList.add(row);
+        }
 
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         inlineKeyboardMarkup.setKeyboard(rowList);

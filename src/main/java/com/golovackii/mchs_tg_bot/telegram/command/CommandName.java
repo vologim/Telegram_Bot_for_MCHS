@@ -12,9 +12,8 @@ public enum CommandName {
     SHOW_RESPONSIBILITIES_COMMAND("/show_responsibilities"),
     GET_RESPONSIBILITIES_BY_ID_COMMAND("/get_responsibilities_by_id"),
     SHOW_KNOWLEDGE_BASE_COMMAND("/show_knowledge_base"),
-    GET_CHARACTERISTIC_FIRE_HOSE_COMMAND("get_characteristic_fire_hose"),
-    GET_CHARACTERISTIC_FIRE_PUMP_COMMAND("get_characteristic_fire_pump"),
-    GET_CHARACTERISTIC_FIRE_STAIRS_COMMAND("get_characteristic_fire_stairs"),
+    SHOW_CHARACTERISTICS_COMMAND("/show_characteristics"),
+    GET_CHARACTERISTICS_COMMAND("/get_characteristics_by_id"),
     SHOW_DEVELOPER("/show_developer");
 
     private final String commandName;

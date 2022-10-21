@@ -28,6 +28,7 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
     public void saveWithFile(Responsibility responsibility, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(RESPONSIBILITY_PATH + responsibility.getPosition(), multipartFile);
         responsibility.setDocument(new Document(path));
+        responsibility.setPosition(multipartFile.getOriginalFilename());
         responsibilityRepository.save(responsibility);
     }
 
@@ -35,6 +36,7 @@ public class ResponsibilityServiceImpl implements ResponsibilityService {
     public void updateWithFile(Responsibility responsibility, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(RESPONSIBILITY_PATH + responsibility.getPosition(), multipartFile);
         responsibility.setDocument(new Document(path));
+        responsibility.setPosition(multipartFile.getOriginalFilename());
         responsibilityRepository.save(responsibility);
     }
 

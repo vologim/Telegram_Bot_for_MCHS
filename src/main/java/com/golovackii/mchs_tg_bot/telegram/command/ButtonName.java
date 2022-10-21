@@ -7,9 +7,7 @@ public enum ButtonName {
     SCHEDULE_BUTTON("График дежурств"),
     KNOWLEDGE_BASE("База знаний"),
     RESPONSIBILITIES("Обязанности"),
-    CHARACTERISTIC_FIRE_PUMP("ТТХ стволов"),
-    CHARACTERISTIC_FIRE_STAIRS("ТТХ лестниц"),
-    CHARACTERISTIC_FIRE_HOSE("ТТХ рукавов"),
+    CHARACTERISTICS("ТТХ"),
     DEVELOPER_BUTTON("Разработчики");
 
     private final String buttonName;

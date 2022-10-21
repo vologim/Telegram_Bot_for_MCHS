@@ -37,7 +37,7 @@ public class StatisticsServiceImpl implements StatisticsService {
                 statistics.clickSchedule();
                 break;
             case ("GetResponsibilityByIdCommand"):
-                statistics.clickKnowledgeBase();
+                statistics.clickResponsibility();
                 break;
             case ("GetRDByIdCommand"):
                 statistics.clickRD();
@@ -48,8 +48,8 @@ public class StatisticsServiceImpl implements StatisticsService {
             case ("ShowDeveloper"):
                 statistics.clickDeveloper();
                 break;
-            case ("GetCharacteristicsDocument"):
-                statistics.clickCharacteristicsDocument();
+            case ("GetCharacteristicsByIdCommand"):
+                statistics.clickCharacteristics();
                 break;
             default:
                 break;
