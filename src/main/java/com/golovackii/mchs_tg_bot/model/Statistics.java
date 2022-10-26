@@ -1,6 +1,7 @@
 package com.golovackii.mchs_tg_bot.model;
 
 import lombok.Data;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Component
+@Scope(value = "prototype")
 @Table(name = "statistics")
 @Data
 public class Statistics {
