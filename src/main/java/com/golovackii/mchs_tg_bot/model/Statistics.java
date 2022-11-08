@@ -43,6 +43,9 @@ public class Statistics {
     @Column(name = "recent_activities")
     private LocalDateTime recentActivities;
 
+    @Column(name = "click_garrison_service")
+    private Long clickGarrisonService;
+
     public Statistics() {
         this.clickCountRD = 0L;
         this.clickCountSchedule = 0L;
@@ -51,6 +54,7 @@ public class Statistics {
         this.clickCountDeveloper = 0L;
         this.clickCharacteristics = 0L;
         this.recentActivities = LocalDateTime.of(1993, 11, 9, 17, 35);
+        this.clickGarrisonService = 0L;
     }
 
     public void clickRD() {
@@ -75,5 +79,9 @@ public class Statistics {
 
     public void clickCharacteristics() {
         clickCharacteristics++;
+    }
+
+    public void clickGarrisonService() {
+        clickGarrisonService++;
     }
 }

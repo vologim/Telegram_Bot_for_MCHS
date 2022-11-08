@@ -27,6 +27,8 @@ public class CommandContainer {
                             ShowDeveloper showDeveloper,
                             ShowListCharacteristics showListCharacteristics,
                             GetCharacteristicsByIdCommand getCharacteristicsByIdCommand,
+                            ShowListGarrisonService showListGarrisonService,
+                            GetGarrisonServiceByIdCommand getGarrisonServiceByIdCommand,
 
                             NoCommand noCommand) {
         this.commandMap = new HashMap<>();
@@ -44,6 +46,8 @@ public class CommandContainer {
         commandMap.put(SHOW_DEVELOPER.getCommandName(), showDeveloper);
         commandMap.put(SHOW_CHARACTERISTICS_COMMAND.getCommandName(), showListCharacteristics);
         commandMap.put(GET_CHARACTERISTICS_COMMAND.getCommandName(), getCharacteristicsByIdCommand);
+        commandMap.put(GET_GARRISON_SERVICE_COMMAND.getCommandName(), getGarrisonServiceByIdCommand);
+        commandMap.put(SHOW_GARRISON_SERVICE_COMMAND.getCommandName(), showListGarrisonService);
 
         this.noCommand = noCommand;
     }

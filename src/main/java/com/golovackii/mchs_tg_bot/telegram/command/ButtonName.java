@@ -8,6 +8,7 @@ public enum ButtonName {
     KNOWLEDGE_BASE("База знаний"),
     RESPONSIBILITIES("Обязанности"),
     CHARACTERISTICS("ТТХ"),
+    GARRISON_SERVICE("Служба"),
     DEVELOPER_BUTTON("Разработчики");
 
     private final String buttonName;

@@ -1,0 +1,1 @@
+alter table statistics add click_garrison_service bigint default 0;
