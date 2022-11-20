@@ -54,6 +54,9 @@ public class StatisticsServiceImpl implements StatisticsService {
             case ("GetGarrisonServiceByIdCommand"):
                 statistics.clickGarrisonService();
                 break;
+            case ("GetGDZSByIdCommand"):
+                statistics.clickCountGDZS();
+                break;
             default:
                 break;
         }

@@ -25,19 +25,19 @@ public class RDControllerImpl implements RDController {
 
     @Override
     @GetMapping("/{id}")
-    public RD getRDById(@PathVariable Integer id) {
+    public RD getElementById(@PathVariable Integer id) {
         return rdService.getById(id);
     }
 
     @Override
     @GetMapping
-    public List<RD> getListRD() {
+    public List<RD> getListElements() {
         return rdService.getList();
     }
 
     @Override
     @PostMapping
-    public void saveRD(@RequestParam(name = "rd") String rd, @RequestParam(name = "file") MultipartFile file) {
+    public void saveElementWithFile(@RequestParam(name = "rd") String rd, @RequestParam(name = "file") MultipartFile file) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         RD newRD = null;
@@ -52,7 +52,7 @@ public class RDControllerImpl implements RDController {
 
     @Override
     @PutMapping
-    public void updateRD(@RequestParam(name = "rd") String rd, @RequestParam(name = "file") MultipartFile file) {
+    public void updateElementWithFile(@RequestParam(name = "rd") String rd, @RequestParam(name = "file") MultipartFile file) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         RD newRD = null;
@@ -70,8 +70,7 @@ public class RDControllerImpl implements RDController {
 
     @Override
     @DeleteMapping("/{id}")
-    public void deleteRDById(@PathVariable Integer id) {
+    public void deleteElementById(@PathVariable Integer id) {
         rdService.deleteById(id);
     }
-
 }

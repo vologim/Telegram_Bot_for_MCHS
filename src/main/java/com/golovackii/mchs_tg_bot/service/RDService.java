@@ -5,16 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-public interface RDService {
+public interface RDService extends BaseService<RD> {
 
-    void saveWithFile(RD rd, MultipartFile multipartFile);
-
-    void updateWithFile(RD rd, MultipartFile multipartFile);
-
-    RD getById(Integer id);
-
-    List<RD> getList();
-
-    void deleteById(Integer id);
 }
 

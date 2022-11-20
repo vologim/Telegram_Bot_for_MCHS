@@ -24,19 +24,19 @@ public class ScheduleControllerImpl implements ScheduleController {
 
     @Override
     @GetMapping("/{id}")
-    public Schedule getById(@PathVariable Integer id) {
+    public Schedule getElementById(@PathVariable Integer id) {
         return scheduleService.getById(id);
     }
 
     @Override
     @GetMapping
-    public List<Schedule> getListSchedules() {
+    public List<Schedule> getListElements() {
         return scheduleService.getList();
     }
 
     @Override
     @PostMapping
-    public void saveSchedule(@RequestParam(name = "schedule") String schedule, @RequestParam(name = "file") MultipartFile multipartFile) {
+    public void saveElementWithFile(@RequestParam(name = "schedule") String schedule, @RequestParam(name = "file") MultipartFile multipartFile) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Schedule newSchedule = null;
@@ -51,7 +51,7 @@ public class ScheduleControllerImpl implements ScheduleController {
 
     @Override
     @PutMapping
-    public void updateSchedule(@RequestParam(name = "schedule") String schedule, @RequestParam(name = "file") MultipartFile multipartFile) {
+    public void updateElementWithFile(@RequestParam(name = "schedule") String schedule, @RequestParam(name = "file") MultipartFile multipartFile) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Schedule newSchedule = null;
@@ -69,7 +69,7 @@ public class ScheduleControllerImpl implements ScheduleController {
 
     @Override
     @DeleteMapping("/{id}")
-    public void deleteScheduleById(@PathVariable Integer id) {
+    public void deleteElementById(@PathVariable Integer id) {
         scheduleService.deleteById(id);
     }
 }

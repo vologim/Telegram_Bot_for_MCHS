@@ -5,15 +5,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-public interface CharacteristicsService {
+public interface CharacteristicsService extends BaseService<Characteristics> {
 
-    void saveWithFile(Characteristics characteristics, MultipartFile multipartFile);
-
-    void updateWithFile(Characteristics characteristics, MultipartFile multipartFile);
-
-    Characteristics getById(Integer id);
-
-    List<Characteristics> getList();
-
-    void deleteById(Integer id);
 }

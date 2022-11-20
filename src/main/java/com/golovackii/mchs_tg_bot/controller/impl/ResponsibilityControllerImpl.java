@@ -24,19 +24,19 @@ public class ResponsibilityControllerImpl implements ResponsibilityController {
 
     @Override
     @GetMapping("/{id}")
-    public Responsibility getById(@PathVariable Integer id) {
+    public Responsibility getElementById(@PathVariable Integer id) {
         return responsibilityService.getById(id);
     }
 
     @Override
     @GetMapping
-    public List<Responsibility> getListResponsibilities() {
+    public List<Responsibility> getListElements() {
         return responsibilityService.getList();
     }
 
     @Override
     @PostMapping
-    public void saveResponsibility(@RequestParam(name = "responsibility") String responsibility, @RequestParam(name = "file") MultipartFile multipartFile) {
+    public void saveElementWithFile(@RequestParam(name = "responsibility") String responsibility, @RequestParam(name = "file") MultipartFile multipartFile) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Responsibility newResponsibility = null;
@@ -51,7 +51,7 @@ public class ResponsibilityControllerImpl implements ResponsibilityController {
 
     @Override
     @PutMapping
-    public void updateResponsibility(@RequestParam(name = "responsibility") String responsibility, @RequestParam(name = "file") MultipartFile multipartFile) {
+    public void updateElementWithFile(@RequestParam(name = "responsibility") String responsibility, @RequestParam(name = "file") MultipartFile multipartFile) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Responsibility newResponsibility = null;
@@ -66,7 +66,7 @@ public class ResponsibilityControllerImpl implements ResponsibilityController {
 
     @Override
     @DeleteMapping("/{id}")
-    public void deleteResponsibilityById(@PathVariable Integer id) {
+    public void deleteElementById(@PathVariable Integer id) {
         responsibilityService.getById(id);
     }
 }

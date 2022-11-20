@@ -16,6 +16,7 @@ public class ShowDeveloper implements Command {
 
     @Value("${developer.information}")
     private String developer;
+    private String MESSAGE = "По всем вопросам и предложениям обращаться: ";
 
     private final StatisticsService statisticsService;
 
@@ -29,7 +30,7 @@ public class ShowDeveloper implements Command {
         String chatId = data.get("chatId");
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText(developer);
+        sendMessage.setText(MESSAGE + developer);
 
         try {
             bot.execute(sendMessage);

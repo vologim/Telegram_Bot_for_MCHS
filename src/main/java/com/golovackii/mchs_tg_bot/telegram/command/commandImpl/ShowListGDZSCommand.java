@@ -1,9 +1,11 @@
 package com.golovackii.mchs_tg_bot.telegram.command.commandImpl;
 
+import com.golovackii.mchs_tg_bot.model.GDZS;
+import com.golovackii.mchs_tg_bot.service.GDZSService;
 import com.golovackii.mchs_tg_bot.telegram.Bot;
-import com.golovackii.mchs_tg_bot.telegram.command.ButtonName;
 import com.golovackii.mchs_tg_bot.telegram.command.Command;
 import com.golovackii.mchs_tg_bot.telegram.command.CommandName;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -15,10 +17,15 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class ShowKnowledgeBaseCommand implements Command {
+public class ShowListGDZSCommand implements Command {
 
-    private final String DECEPTION_ID = " " + 0;
-    private final String MESSAGE = "Выберите пункт:";
+    private final GDZSService gdzsService;
+    private final String MESSAGE = "Выберите документ:";
+
+    @Autowired
+    public ShowListGDZSCommand(GDZSService gdzsService) {
+        this.gdzsService = gdzsService;
+    }
 
     @Override
     public void doAction(Bot bot, Map<String, String> data) {
@@ -37,28 +44,18 @@ public class ShowKnowledgeBaseCommand implements Command {
 
     private InlineKeyboardMarkup getKeyboard() {
 
-        InlineKeyboardButton button1 = new InlineKeyboardButton();
-        button1.setText(ButtonName.RESPONSIBILITIES.getButtonName());
-        button1.setCallbackData(CommandName.SHOW_RESPONSIBILITIES_COMMAND.getCommandName() + DECEPTION_ID);
-
-        InlineKeyboardButton button2 = new InlineKeyboardButton();
-        button2.setText(ButtonName.CHARACTERISTICS.getButtonName());
-        button2.setCallbackData(CommandName.SHOW_CHARACTERISTICS_COMMAND.getCommandName() + DECEPTION_ID);
-
-        List<InlineKeyboardButton> row1 = new ArrayList<>();
-        row1.add(button1);
-        row1.add(button2);
-
-        InlineKeyboardButton button3 = new InlineKeyboardButton();
-        button3.setText(ButtonName.GARRISON_SERVICE.getButtonName());
-        button3.setCallbackData(CommandName.SHOW_GARRISON_SERVICE_COMMAND.getCommandName() + DECEPTION_ID);
-
-        List<InlineKeyboardButton> row2 = new ArrayList<>();
-        row2.add(button3);
-
         List<List<InlineKeyboardButton>> rowList = new ArrayList<>();
-        rowList.add(row1);
-        rowList.add(row2);
+
+        for (GDZS gdzs : gdzsService.getList()) {
+            InlineKeyboardButton button = new InlineKeyboardButton();
+            button.setText(gdzs.getFileName());
+            button.setCallbackData(CommandName.GET_GDZS_COMMAND.getCommandName() + " " + gdzs.getId());
+
+            List<InlineKeyboardButton> row = new ArrayList<>();
+            row.add(button);
+
+            rowList.add(row);
+        }
 
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         inlineKeyboardMarkup.setKeyboard(rowList);

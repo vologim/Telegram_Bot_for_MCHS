@@ -9,7 +9,8 @@ public enum ButtonName {
     RESPONSIBILITIES("Обязанности"),
     CHARACTERISTICS("ТТХ"),
     GARRISON_SERVICE("Служба"),
-    DEVELOPER_BUTTON("Разработчики");
+    DEVELOPER_BUTTON("Разработчики"),
+    GDZS_BUTTON("ГДЗС");
 
     private final String buttonName;
 

@@ -23,12 +23,14 @@ public class CommandContainer {
                             GetScheduleByIdCommand getScheduleByIdCommand,
                             ShowResponsibilitiesCommand showResponsibilitiesCommand,
                             GetResponsibilityByIdCommand getResponsibilityByIdCommand,
-                            ShowKnowledgeBaseCommand showKnowledgeBaseCommand,
+                            ShowKnowledgeBase showKnowledgeBase,
                             ShowDeveloper showDeveloper,
                             ShowListCharacteristics showListCharacteristics,
                             GetCharacteristicsByIdCommand getCharacteristicsByIdCommand,
                             ShowListGarrisonService showListGarrisonService,
                             GetGarrisonServiceByIdCommand getGarrisonServiceByIdCommand,
+                            ShowListGDZSCommand showListGDZSCommand,
+                            GetGDZSByIdCommand getGDZSByIdCommand,
 
                             NoCommand noCommand) {
         this.commandMap = new HashMap<>();
@@ -42,12 +44,14 @@ public class CommandContainer {
         commandMap.put(GET_SCHEDULE_BY_ID_COMMAND.getCommandName(), getScheduleByIdCommand);
         commandMap.put(SHOW_RESPONSIBILITIES_COMMAND.getCommandName(), showResponsibilitiesCommand);
         commandMap.put(GET_RESPONSIBILITIES_BY_ID_COMMAND.getCommandName(), getResponsibilityByIdCommand);
-        commandMap.put(SHOW_KNOWLEDGE_BASE_COMMAND.getCommandName(), showKnowledgeBaseCommand);
+        commandMap.put(SHOW_KNOWLEDGE_BASE_COMMAND.getCommandName(), showKnowledgeBase);
         commandMap.put(SHOW_DEVELOPER.getCommandName(), showDeveloper);
         commandMap.put(SHOW_CHARACTERISTICS_COMMAND.getCommandName(), showListCharacteristics);
         commandMap.put(GET_CHARACTERISTICS_COMMAND.getCommandName(), getCharacteristicsByIdCommand);
         commandMap.put(GET_GARRISON_SERVICE_COMMAND.getCommandName(), getGarrisonServiceByIdCommand);
         commandMap.put(SHOW_GARRISON_SERVICE_COMMAND.getCommandName(), showListGarrisonService);
+        commandMap.put(GET_GDZS_COMMAND.getCommandName(), getGDZSByIdCommand);
+        commandMap.put(SHOW_GDZS_COMMAND.getCommandName(), showListGDZSCommand);
 
         this.noCommand = noCommand;
     }

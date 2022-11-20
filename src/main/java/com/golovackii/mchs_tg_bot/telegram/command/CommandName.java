@@ -16,6 +16,9 @@ public enum CommandName {
     GET_CHARACTERISTICS_COMMAND("/get_characteristics_by_id"),
     SHOW_GARRISON_SERVICE_COMMAND("/show_garrison_service"),
     GET_GARRISON_SERVICE_COMMAND("/get_garrison_service_by_id"),
+    SHOW_GDZS_COMMAND("/show_gdzs"),
+    GET_GDZS_COMMAND("/get_gdzs_by_id"),
+
     SHOW_DEVELOPER("/show_developer");
 
     private final String commandName;

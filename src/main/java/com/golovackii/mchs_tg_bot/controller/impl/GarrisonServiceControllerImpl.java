@@ -25,19 +25,19 @@ public class GarrisonServiceControllerImpl implements GarrisonServiceController 
 
     @Override
     @GetMapping("/{id}")
-    public GarrisonService getGarrisonServiceById(@PathVariable Integer id) {
+    public GarrisonService getElementById(@PathVariable Integer id) {
         return service.getById(id);
     }
 
     @Override
     @GetMapping
-    public List<GarrisonService> getListGarrisonService() {
+    public List<GarrisonService> getListElements() {
         return service.getList();
     }
 
     @Override
     @PostMapping
-    public void saveGarrisonService(@RequestParam(name = "garrisonService") String garrisonService, @RequestParam(name = "file") MultipartFile file) {
+    public void saveElementWithFile(@RequestParam(name = "garrisonService") String garrisonService, @RequestParam(name = "file") MultipartFile file) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         GarrisonService newGarrisonService = null;
@@ -52,7 +52,7 @@ public class GarrisonServiceControllerImpl implements GarrisonServiceController 
 
     @Override
     @PutMapping
-    public void updateGarrisonService(@RequestParam(name = "garrisonService") String garrisonService, @RequestParam(name = "file") MultipartFile file) {
+    public void updateElementWithFile(@RequestParam(name = "garrisonService") String garrisonService, @RequestParam(name = "file") MultipartFile file) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         GarrisonService newGarrisonService = null;
@@ -67,7 +67,7 @@ public class GarrisonServiceControllerImpl implements GarrisonServiceController 
 
     @Override
     @DeleteMapping("/{id}")
-    public void deleteGarrisonServiceById(@PathVariable Integer id) {
+    public void deleteElementById(@PathVariable Integer id) {
         service.deleteById(id);
     }
 }

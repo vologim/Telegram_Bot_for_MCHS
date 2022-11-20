@@ -24,19 +24,19 @@ public class CharacteristicsControllerImpl implements CharacteristicsController 
 
     @Override
     @GetMapping("/{id}")
-    public Characteristics getById(@PathVariable Integer id) {
+    public Characteristics getElementById(@PathVariable Integer id) {
         return characteristicsService.getById(id);
     }
 
     @Override
     @GetMapping
-    public List<Characteristics> getListCharacteristics() {
+    public List<Characteristics> getListElements() {
         return characteristicsService.getList();
     }
 
     @Override
     @PostMapping
-    public void saveCharacteristics(@RequestParam(name = "characteristics") String characteristics, @RequestParam(name = "file") MultipartFile multipartFile) {
+    public void saveElementWithFile(@RequestParam(name = "characteristics") String characteristics, @RequestParam(name = "file") MultipartFile multipartFile) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Characteristics newCharacteristics = null;
@@ -51,7 +51,7 @@ public class CharacteristicsControllerImpl implements CharacteristicsController 
 
     @Override
     @PutMapping
-    public void updateCharacteristics(@RequestParam(name = "characteristics") String characteristics, @RequestParam(name = "file") MultipartFile multipartFile) {
+    public void updateElementWithFile(@RequestParam(name = "characteristics") String characteristics, @RequestParam(name = "file") MultipartFile multipartFile) {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Characteristics newCharacteristics = null;
@@ -66,7 +66,7 @@ public class CharacteristicsControllerImpl implements CharacteristicsController 
 
     @Override
     @DeleteMapping("/{id}")
-    public void deleteCharacteristics(@PathVariable Integer id) {
+    public void deleteElementById(@PathVariable Integer id) {
         characteristicsService.deleteById(id);
     }
 }

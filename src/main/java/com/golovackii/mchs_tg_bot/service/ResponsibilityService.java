@@ -5,15 +5,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-public interface ResponsibilityService {
+public interface ResponsibilityService extends BaseService<Responsibility> {
 
-    void saveWithFile(Responsibility responsibility, MultipartFile multipartFile);
-
-    void updateWithFile(Responsibility responsibility, MultipartFile multipartFile);
-
-    Responsibility getById(Integer id);
-
-    List<Responsibility> getList();
-
-    void deleteById(Integer id);
 }
