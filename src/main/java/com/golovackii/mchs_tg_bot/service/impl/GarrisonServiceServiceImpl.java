@@ -28,7 +28,7 @@ public class GarrisonServiceServiceImpl implements GarrisonServiceService {
     public void saveWithFile(GarrisonService garrisonService, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(GARRISON_SERVICE + garrisonService.getFileName(), multipartFile);
         garrisonService.setDocument(new Document(path));
-        garrisonService.setFileName(garrisonService.getFileName());
+        garrisonService.setFileName(multipartFile.getOriginalFilename());
         repository.save(garrisonService);
     }
 
@@ -36,7 +36,7 @@ public class GarrisonServiceServiceImpl implements GarrisonServiceService {
     public void updateWithFile(GarrisonService garrisonService, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(GARRISON_SERVICE + garrisonService.getFileName(), multipartFile);
         garrisonService.setDocument(new Document(path));
-        garrisonService.setFileName(garrisonService.getFileName());
+        garrisonService.setFileName(multipartFile.getOriginalFilename());
         repository.save(garrisonService);
     }
 

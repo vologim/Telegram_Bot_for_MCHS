@@ -28,7 +28,7 @@ public class GDZSServiceImpl implements GDZSService {
     public void saveWithFile(GDZS element, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(PATH + element.getFileName(), multipartFile);
         element.setDocument(new Document(path));
-        element.setFileName(element.getFileName());
+        element.setFileName(multipartFile.getOriginalFilename());
         gdzsRepository.save(element);
     }
 
@@ -36,7 +36,7 @@ public class GDZSServiceImpl implements GDZSService {
     public void updateWithFile(GDZS element, MultipartFile multipartFile) {
         String path = fileLoader.uploadFile(PATH + element.getFileName(), multipartFile);
         element.setDocument(new Document(path));
-        element.setFileName(element.getFileName());
+        element.setFileName(multipartFile.getOriginalFilename());
         gdzsRepository.save(element);
     }
 
